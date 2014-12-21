@@ -4,24 +4,49 @@ angular.module('starter.controllers', [])
 
 .controller('AboutCtrl', function($scope) {})
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+.controller('FindRatioCtrl', function($scope) {
+  $scope.validationError = {};
+  $scope.ratioData = {};
+  $scope.postData = {grade: "20"};
+  $scope.gradeRange = [6,7.5,10]
+  for (i = 15;i<=80;i+=5) {
+      $scope.gradeRange.push(i);
   }
+
+  $scope.ratio = function() {
+      var constant = 30;
+      var grade = parseInt($scope.postData.grade);
+
+      var cement = 1;
+      var sand = constant / grade;
+      var aggregate = 2 * constant / grade;
+      var ratio = {cement: cement, sand: sand.toFixed(2), aggregate: aggregate.toFixed(2)};
+      $scope.ratioData = ratio;
+      return ratio;
+  };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+
+.controller('FindQuantity', function($scope, $stateParams, Rates) {
+  $scope.chat = Formulas.get($stateParams.chatId);
+  $scope.friendsList = [];
+  $scope.friendName = {};
+  $scope.calculate = function() {
+      console.log("adding a new friend");
+      $scope.friendsList.push($scope.friendName.text);
+  };
 })
 
-.controller('FriendsCtrl', function($scope, Friends) {
+.controller('FindCostCtrl', function($scope, Rates) {
   $scope.friends = Friends.all();
 })
 
-.controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
+.controller('RatesCtrl', function($scope, $stateParams) {
   $scope.friend = Friends.get($stateParams.friendId);
 })
+
+
+//Not Useful
 
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {

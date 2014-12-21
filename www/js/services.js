@@ -1,15 +1,24 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
+.factory('Formulas', function() {
   // Might use a resource here that returns a JSON array
 
-  // Some fake testing data
-  var chats = [{
+  var formulas = [{
     id: 0,
     name: 'Formula 1',
     lastText: 'The material consumption for concrete',
     face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png',
-    goals: ['The built up area feasible on the given plot area.']
+    goals: ['The built up area feasible on the given plot area.'],
+    inputs: [{label: 'First param', 
+              type: 'Range',
+              start: 0,
+              end: 100,
+              variable: 'x'},
+
+             {label: 'Second param', 
+              type: 'Number', 
+              variable: 'y'}],
+    formula: 'x + y'
   }, {
     id: 1,
     name: 'Formula 2',
@@ -45,18 +54,17 @@ angular.module('starter.services', [])
 
   return {
     all: function() {
-      return chats;
+      return formulas;
     },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
-    },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+    get: function(formulaId) {
+      for (var i = 0; i < formulas.length; i++) {
+        if (formulas[i].id === parseInt(formulaId)) {
+          return formulas[i];
         }
       }
       return null;
+    },
+    evalute: function(inputParams, formula) {
     }
   }
 })

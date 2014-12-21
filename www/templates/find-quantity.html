@@ -1,0 +1,88 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="Find Ratio">
+  <ion-content class="padding">
+    <div class="card">
+      <div class="item item-text-wrap">
+        Please choose the appropriate grade on the
+        slider and the Ratio gets calculated dynamically.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="item item-divider">
+         Select Cement grade
+      </div>
+      <div class="item item-text-wrap">
+        <form ng-submit="findRatio()">
+         <!--<label class="item item-input">
+            <input type="text" ng-model="postData.grade" placeholder="Concrete grade">
+          </label> -->
+         <div class="row">
+           <div class="col col-80">
+             <div class="range range-positive">
+               M6
+               <!--<i class="icon ion-minus-round"></i>-->
+               <input type="range" ng-model="postData.grade"
+                      name="Concrete grade" min="5" max="80"
+                      value="20" step="5">
+               <!-- <i class="icon ion-plus-round"></i> -->
+               M80
+             </div>
+           </div>
+           <div class="col col-center">
+             <div class="col-cell-values">
+               M{{postData.grade}}
+             </div>
+           </div>
+         </div>
+        </form>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="item item-divider">
+         Ratio
+      </div>
+      <div class="item item-text-wrap">
+        <div class="row">
+          <div class="col">
+            <div class="col-cell-header">Cement</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-header">Sand</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-header">Aggregate</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col center">
+             <div class="col-cell-values">{{ratio().cement}}</div>
+          </div>
+          <div class="col center">
+             <div class="col-cell-values">{{ratio().sand}}</div>
+          </div>
+          <div class="col center">
+             <div class="col-cell-values">{{ratio().aggregate}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    <div class="row">
+      <div class="col"></div>
+      <div class="col col-50">
+        <button class="button button-block button-positive icon-right ion-chevron-right"
+                type="submit">Find Quantities</button>
+      </div>
+      <div class="col"></div>
+    </div>
+      
+    
+  </ion-content>
+</ion-view>

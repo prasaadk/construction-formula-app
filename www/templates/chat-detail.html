@@ -17,5 +17,22 @@
           </ion-item>
         </ion-list>
     </div>
+    <form ng-submit="calculate()">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input type="text" ng-model="friendName.text" placeholder="Add friend">
+        </label>
+        <div>
+          <button class="button button-block button-positive" type="submit">Calculate</button>
+        </div>
+      </div>
+    </form>
+    <div class="list list-inset">
+        <ion-list>
+          <ion-item class="item item-text-wrap" ng-repeat="friend in friendsList">
+            {{friend}}
+          </ion-item>
+        </ion-list>
+    </div>
   </ion-content>
 </ion-view>

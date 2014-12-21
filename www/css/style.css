@@ -1,1 +1,19 @@
 /* Empty. Add your own CSS if you like */
+
+.col-cell-header {
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background: #f7f7f7;
+    text-align: center;
+}
+
+.col-cell-values {
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+    text-align: center;
+}
