@@ -4,14 +4,62 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="Find Ratio">
+<ion-view view-title="Find Grade and Quantity">
   <ion-content class="padding">
+    <!-- Description -->
     <div class="card">
       <div class="item item-text-wrap">
-        Please choose the appropriate grade on the
-        slider and the Ratio gets calculated dynamically.
+        Enter Ratio and adjust Sand mixture percentage.
       </div>
     </div>
+
+    <!-- Ratio Inputs -->
+
+    <div class="card">
+      <div class="item item-divider">
+         Select Ratio
+      </div>
+      <div class="item item-text-wrap">
+        <div class="row">
+          <div class="col">
+            <div class="col-cell-header">Cement</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-header">Crushed Sand</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-header">River Sand</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-header">Aggregate</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col center">
+             <div class="col-cell-values">{{ratio().cement}}</div>
+          </div>
+          <div class="col center">
+             <div class="col-cell-values">{{ratio().sand}}</div>
+          </div>
+          <div class="col center">
+             <div class="col-cell-values">{{ratio().sand}}</div>
+          </div>
+          <div class="col center">
+             <div class="col-cell-values">{{ratio().aggregate}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crushed / River percentage slider -->
+
+    <!-- Display Grade -->
+
+    <!-- Table for Cement, Crushed sand, River sand, Aggregate
+    quantities -->
+
+    <!-- Button to Find Costs -->
+  
 
     <div class="card">
       <div class="item item-divider">
@@ -41,36 +89,6 @@
            </div>
          </div>
         </form>
-      </div>
-    </div>
-    
-    <div class="card">
-      <div class="item item-divider">
-         Ratio
-      </div>
-      <div class="item item-text-wrap">
-        <div class="row">
-          <div class="col">
-            <div class="col-cell-header">Cement</div>
-          </div>
-          <div class="col">
-            <div class="col-cell-header">Sand</div>
-          </div>
-          <div class="col">
-            <div class="col-cell-header">Aggregate</div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col center">
-             <div class="col-cell-values">{{ratio().cement}}</div>
-          </div>
-          <div class="col center">
-             <div class="col-cell-values">{{ratio().sand}}</div>
-          </div>
-          <div class="col center">
-             <div class="col-cell-values">{{ratio().aggregate}}</div>
-          </div>
-        </div>
       </div>
     </div>
       

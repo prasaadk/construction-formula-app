@@ -1,24 +1,20 @@
-<!--
-  This template loads for the 'tab.friend-detail' state (app.js)
-  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
-  The FriendsCtrl pulls data from the Friends service (service.js)
-  The Friends service returns an array of friend data
--->
 <ion-view view-title="Find Ratio">
   <ion-content class="padding">
     <div class="card">
       <div class="item item-text-wrap">
-        Please choose the appropriate grade on the
-        slider and the Ratio gets calculated dynamically.
+        Please select Cement grade on the
+        slider and the Ratio (cement:sand:aggregate) gets calculated instantly.
       </div>
     </div>
 
+    <!-- Select Grade -->
     <div class="card">
+      <!-- Title -->
       <div class="item item-divider">
          Select Cement grade
       </div>
+      <!-- Slider selector for Cement grade-->
       <div class="item item-text-wrap">
-        <form ng-submit="findRatio()">
          <!--<label class="item item-input">
             <input type="text" ng-model="postData.grade" placeholder="Concrete grade">
           </label> -->
@@ -40,7 +36,6 @@
              </div>
            </div>
          </div>
-        </form>
       </div>
     </div>
     
@@ -66,6 +61,64 @@
           </div>
           <div class="col center">
              <div class="col-cell-values">{{ratio().sand}}</div>
+          </div>
+          <div class="col center">
+             <div class="col-cell-values">{{ratio().aggregate}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slider selector for Crushed / River sand proportion -->
+    <div class="card">
+      <div class="item item-divider">
+         Crushed Sand (CS) / River Sand (RS)
+      </div>
+      <div class="item item-text-wrap">
+         <div class="row">
+           <div class="col">
+             <div class="range range-positive">
+               CS {{crushedSandProportion()}}%
+               <!--<i class="icon ion-minus-round"></i>-->
+               <input type="range" ng-model="postData.sandProportion"
+                      name="Sand mix" min="0" max="100"
+                      value="50" step="5">
+               <!-- <i class="icon ion-plus-round"></i> -->
+               RS {{riverSandProportion()}}%
+             </div>
+           </div>
+         </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="item item-divider">
+         Ratio with Sand mix
+      </div>
+      <div class="item item-text-wrap">
+        <div class="row">
+          <div class="col">
+            <div class="col-cell-header">Cement</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-header">Crushed Sand</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-header">River Sand</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-header">Aggregate</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col center">
+             <div class="col-cell-values">{{ratio().cement}}</div>
+          </div>
+          <div class="col center">
+             <div class="col-cell-values">{{ratio().sand*crushedSandProportion()/100}}</div>
+          </div>
+          <div class="col center">
+             <div class="col-cell-values">{{ratio().sand*riverSandProportion()/100}}</div>
           </div>
           <div class="col center">
              <div class="col-cell-values">{{ratio().aggregate}}</div>

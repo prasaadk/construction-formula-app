@@ -58,6 +58,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
+  .state('tab.quantity', {
+      url: '/quantity',
+      views: {
+        'find-quantity': {
+          templateUrl: 'templates/find-quantity.html',
+          controller: 'FindQuantityCtrl'
+        }
+      }
+    })
+
   .state('tab.friends', {
       url: '/friends',
       views: {

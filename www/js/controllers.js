@@ -7,10 +7,18 @@ angular.module('starter.controllers', [])
 .controller('FindRatioCtrl', function($scope) {
   $scope.validationError = {};
   $scope.ratioData = {};
-  $scope.postData = {grade: "20"};
+  $scope.postData = {grade: "20", sandProportion: "50"};
   $scope.gradeRange = [6,7.5,10]
   for (i = 15;i<=80;i+=5) {
       $scope.gradeRange.push(i);
+  }
+
+  $scope.crushedSandProportion = function () {
+      return 100 - parseInt($scope.postData.sandProportion);
+  }
+
+  $scope.riverSandProportion = function () {
+      return parseInt($scope.postData.sandProportion);
   }
 
   $scope.ratio = function() {
@@ -27,14 +35,8 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('FindQuantity', function($scope, $stateParams, Rates) {
-  $scope.chat = Formulas.get($stateParams.chatId);
-  $scope.friendsList = [];
-  $scope.friendName = {};
-  $scope.calculate = function() {
-      console.log("adding a new friend");
-      $scope.friendsList.push($scope.friendName.text);
-  };
+.controller('FindQuantityCtrl', function($scope) {
+
 })
 
 .controller('FindCostCtrl', function($scope, Rates) {
