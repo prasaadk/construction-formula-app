@@ -15,9 +15,6 @@
       </div>
       <!-- Slider selector for Cement grade-->
       <div class="item item-text-wrap">
-         <!--<label class="item item-input">
-            <input type="text" ng-model="postData.grade" placeholder="Concrete grade">
-          </label> -->
          <div class="row">
            <div class="col col-80">
              <div class="range range-positive">
@@ -115,10 +112,10 @@
              <div class="col-cell-values">{{ratio().cement}}</div>
           </div>
           <div class="col center">
-             <div class="col-cell-values">{{ratio().sand*crushedSandProportion()/100}}</div>
+             <div class="col-cell-values">{{ratio().cs}}</div>
           </div>
           <div class="col center">
-             <div class="col-cell-values">{{ratio().sand*riverSandProportion()/100}}</div>
+             <div class="col-cell-values">{{ratio().rs}}</div>
           </div>
           <div class="col center">
              <div class="col-cell-values">{{ratio().aggregate}}</div>

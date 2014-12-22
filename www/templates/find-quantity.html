@@ -17,7 +17,7 @@
 
     <div class="card">
       <div class="item item-divider">
-         Select Ratio
+         Choose ratio
       </div>
       <div class="item item-text-wrap">
         <div class="row">
@@ -36,67 +36,123 @@
         </div>
         <div class="row">
           <div class="col center">
-             <div class="col-cell-values">{{ratio().cement}}</div>
+             <div class="col-cell-values">{{ratioData.cement}}</div>
           </div>
           <div class="col center">
-             <div class="col-cell-values">{{ratio().sand}}</div>
+            <label>
+              <input type="number" ng-model="ratioData.cs" min="0"
+              max="50" step="0.05" />
+            </label>
           </div>
           <div class="col center">
-             <div class="col-cell-values">{{ratio().sand}}</div>
+            <label>
+              <input type="number" ng-model="ratioData.rs" min="0"
+                     max="30" step="0.05" />
+            </label>
           </div>
           <div class="col center">
-             <div class="col-cell-values">{{ratio().aggregate}}</div>
+            <label>
+              <input type="number" ng-model="ratioData.aggregate" min="0" max="100" step="0.05" />
+            </label>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Crushed / River percentage slider -->
-
     <!-- Display Grade -->
+    <div class="card">
+      <div class="item item-text-wrap">
+        <div class="row">
+          <div class="col">
+            <div class="col-cell-header">Grade</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">M{{calculateGrade()}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <!-- Table for Cement, Crushed sand, River sand, Aggregate
     quantities -->
 
-    <!-- Button to Find Costs -->
-  
-
     <div class="card">
       <div class="item item-divider">
-         Select Cement grade
+         Quantities
+      </div>
+      <div class="item item-text-wrap item-toggle">
+        <strong>Unit:</strong> {{unit}}
+        <label class="toggle">
+          <input type="checkbox" ng-click="unitName()" checked="true">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
       </div>
       <div class="item item-text-wrap">
-        <form ng-submit="findRatio()">
-         <!--<label class="item item-input">
-            <input type="text" ng-model="postData.grade" placeholder="Concrete grade">
-          </label> -->
-         <div class="row">
-           <div class="col col-80">
-             <div class="range range-positive">
-               M6
-               <!--<i class="icon ion-minus-round"></i>-->
-               <input type="range" ng-model="postData.grade"
-                      name="Concrete grade" min="5" max="80"
-                      value="20" step="5">
-               <!-- <i class="icon ion-plus-round"></i> -->
-               M80
-             </div>
-           </div>
-           <div class="col col-center">
-             <div class="col-cell-values">
-               M{{postData.grade}}
-             </div>
-           </div>
-         </div>
-        </form>
+        <!-- Cement quantity -->
+        <div class="row">
+          <div class="col">
+            <div class="col-cell-header">Cement</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">{{calculateQuantity().cement}}</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">Bags</div>
+          </div>
+        </div>
+
+        <!-- Crushed Sand quantity -->
+        <div class="row">
+          <div class="col">
+            <div class="col-cell-header">Crushed Sand</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">{{calculateQuantity().cs}}</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">{{unit}}</div>
+          </div>
+        </div>
+
+        <!-- River Sand quantity -->
+        <div class="row">
+          <div class="col">
+            <div class="col-cell-header">River Sand</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">{{calculateQuantity().rs}}</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">{{unit}}</div>
+          </div>
+        </div>
+
+        <!-- Aggregate quantity -->
+        <div class="row">
+          <div class="col">
+            <div class="col-cell-header">Aggregate</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">{{calculateQuantity().aggregate}}</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">{{unit}}</div>
+          </div>
+        </div>
       </div>
     </div>
+    
+
+    <!-- Button to Find Costs -->
       
     <div class="row">
       <div class="col"></div>
       <div class="col col-50">
         <button class="button button-block button-positive icon-right ion-chevron-right"
-                type="submit">Find Quantities</button>
+                type="submit">Find Costs</button>
       </div>
       <div class="col"></div>
     </div>
