@@ -4,85 +4,21 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="Grade and Quantity">
+<ion-view view-title="Find Grade and Quantity">
   <ion-content class="padding">
     <!-- Description -->
     <div class="card">
       <div class="item item-text-wrap page-title">
-        Enter Ratio and adjust Sand mixture percentage.
+        This page is for costs.
       </div>
     </div>
-
-    <!-- Ratio Inputs -->
-
-    <div class="card">
-      <div class="item item-divider">
-        Choose ratio
-      </div>
-      <div class="item item-text-wrap">
-        <div class="row">
-          <div class="col">
-            <div class="col-cell-header">Cement</div>
-          </div>
-          <div class="col">
-            <div class="col-cell-header">Crushed Sand</div>
-          </div>
-          <div class="col">
-            <div class="col-cell-header">River Sand</div>
-          </div>
-          <div class="col">
-            <div class="col-cell-header">Aggregate</div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col center">
-            <div class="col-cell-values">{{ratioData.cement}}</div>
-          </div>
-          <div class="col center">
-            <label>
-              <input type="number" ng-model="ratioData.cs" min="0"
-                     max="50" step="0.05" />
-            </label>
-          </div>
-          <div class="col center">
-            <label>
-              <input type="number" ng-model="ratioData.rs" min="0"
-                     max="30" step="0.05" />
-            </label>
-          </div>
-          <div class="col center">
-            <label>
-              <input type="number" ng-model="ratioData.aggregate" min="0" max="100" step="0.05" />
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Display Concrete Grade -->
-    <div class="card">
-      <div class="item item-divider">
-        Concrete Grade
-      </div>
-      <div class="item item-text-wrap">
-        <div class="row">
-          <div class="col">
-            <div class="col-cell-header">Grade</div>
-          </div>
-          <div class="col">
-            <div class="col-cell-values">M{{calculateGrade()}}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
 
     <!-- Table for Cement, Crushed sand, River sand, Aggregate
     quantities -->
 
     <div class="card">
       <div class="item item-divider">
-        Quantities
+        Enter Quantities
       </div>
       <div class="item item-text-wrap item-toggle">
         <strong>Unit:</strong> {{unit()}}
@@ -147,19 +83,123 @@
         </div>
       </div>
     </div>
-    
 
-    <!-- Button to Find Costs -->
-      
-    <div class="row">
-      <div class="col"></div>
-      <div class="col col-50">
-        <button class="button button-block button-positive icon-right ion-chevron-right"
-                type="submit">Find Costs</button>
+
+    <!-- Ratio Inputs -->
+    <div class="card">
+      <div class="item item-divider">
+        Choose ratio
       </div>
-      <div class="col"></div>
+      <div class="item item-text-wrap">
+        <div class="row">
+          <div class="col">
+            <div class="col-cell-header">Cement</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-header">Crushed Sand</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-header">River Sand</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-header">Aggregate</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col center">
+            <div class="col-cell-values">{{ratioData.cement}}</div>
+          </div>
+          <div class="col center">
+            <label>
+              <input type="number" ng-model="ratioData.cs" min="0"
+                     max="50" step="0.05" />
+            </label>
+          </div>
+          <div class="col center">
+            <label>
+              <input type="number" ng-model="ratioData.rs" min="0"
+                     max="30" step="0.05" />
+            </label>
+          </div>
+          <div class="col center">
+            <label>
+              <input type="number" ng-model="ratioData.aggregate" min="0" max="100" step="0.05" />
+            </label>
+          </div>
+        </div>
+      </div>
     </div>
-      
+
+    <!-- Table for Cement, Crushed sand, River sand, Aggregate
+    quantities -->
+
+    <div class="card">
+      <div class="item item-divider">
+        Costs
+      </div>
+      <div class="item item-text-wrap item-toggle">
+        <strong>Unit:</strong> {{unit()}}
+        <label class="toggle">
+          <input type="checkbox" ng-model="settings.enableCum" >
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </div>
+      <div class="item item-text-wrap">
+        <!-- Cement quantity -->
+        <div class="row">
+          <div class="col">
+            <div class="col-cell-header">Cement</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">{{calculateQuantity().cement}}</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">Bags</div>
+          </div>
+        </div>
+
+        <!-- Crushed Sand quantity -->
+        <div class="row">
+          <div class="col">
+            <div class="col-cell-header">Crushed Sand</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">{{calculateQuantity().cs}}</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">{{unit()}}</div>
+          </div>
+        </div>
+
+        <!-- River Sand quantity -->
+        <div class="row">
+          <div class="col">
+            <div class="col-cell-header">River Sand</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">{{calculateQuantity().rs}}</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">{{unit()}}</div>
+          </div>
+        </div>
+
+        <!-- Aggregate quantity -->
+        <div class="row">
+          <div class="col">
+            <div class="col-cell-header">Aggregate</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">{{calculateQuantity().aggregate}}</div>
+          </div>
+          <div class="col">
+            <div class="col-cell-values">{{unit()}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
     
   </ion-content>
 </ion-view>

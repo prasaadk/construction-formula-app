@@ -25,6 +25,7 @@
     background: #fff;
     text-align: center;
     font-size: 12px;
+    font-weight: bold;
 }
 
 input[type="number"] {
@@ -38,4 +39,8 @@ input[type="number"] {
     text-align: center;
     font-size: 12px;
     background: #f7f7f7;
+}
+
+.page-title {
+    font-size: 14px;
 }

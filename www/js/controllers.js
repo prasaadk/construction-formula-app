@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('HomeCtrl', function($scope) {})
 
 .controller('AboutCtrl', function($scope) {})
 
@@ -96,10 +96,6 @@ angular.module('starter.controllers', [])
     };
 }])
 
-.controller('FindCostCtrl', ['$rootScope', '$scope', function($rootScope, $scope) {
-
-}])
-
 .controller('RatesCtrl', ['$rootScope', '$scope', 'Rates',function($rootScope, $scope, Rates) {
     var conversionRate = 0.3529;
     $rootScope.rateSettings = {
@@ -124,10 +120,6 @@ angular.module('starter.controllers', [])
 }])
 
 
-//Not Useful
-
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-});
+.controller('FindCostCtrl', ['$rootScope', '$scope', 'Rates', function($rootScope, $scope, Rates) {
+    $rootScope.materialRates = Rates.getMaterialRates();
+}]);
