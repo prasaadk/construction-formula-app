@@ -1,0 +1,107 @@
+<ion-view view-title="Rates">
+  <ion-content class="padding">
+    <!-- Rates -->
+    <!-- Description -->
+    <div class="card">
+      <div class="item item-text-wrap">
+        Please enter the material rates. These rates are used to
+        calculate costs.
+      </div>
+    </div>
+
+    <div class="card">
+            <!-- Title -->
+      <div class="item item-divider">
+         Material rates
+      </div>
+      <div class="item item-text-wrap item-toggle">
+        <strong>Unit: </strong> {{rateUnit()}}
+        <label class="toggle">
+          <input type="checkbox" ng-model="rateSettings.enableCum" ng-click="convert()"/>
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </div>
+
+      <div class="item item-text-wrap">
+        <!-- Cement Rate -->
+        <div class="row"> 
+          <div class="col">
+            <div class="col-cell-header">Cement</div>
+          </div>
+          <div class="col">
+            <label>
+             <input type="number" ng-model="materialRates.cement" min="0"
+                     max="10000" />
+            </label>              
+          </div> 
+          <div class="col"> 
+            <div class="col-cell-values">₹ Per Bag</div> 
+          </div> 
+        </div> 
+
+        <!-- Crushed Sand Rate -->
+        <div class="row">
+          <div class="col">
+            <div class="col-cell-header">Crushed Sand</div>
+          </div>
+          <div class="col">
+            <label>
+             <input type="number" ng-model="materialRates.cs" min="0" 
+                     max="10000" />
+            </label> 
+          </div> 
+          <div class="col"> 
+            <div class="col-cell-values">₹ Per {{rateUnit()}}</div>
+          </div>
+        </div>  
+
+        <!-- River Sand Rate -->
+        <div class="row">  
+          <div class="col">  
+            <div class="col-cell-header">River Sand</div>  
+          </div>  
+          <div class="col">  
+            <label>  
+             <input type="number" ng-model="materialRates.rs" min="0"  
+                     max="10000" />  
+            </label>  
+          </div>  
+          <div class="col">  
+            <div class="col-cell-values">₹ Per {{rateUnit()}}</div>  
+          </div>  
+        </div>  
+
+        <!-- Aggregate quantity -->
+        <div class="row">  
+          <div class="col">  
+            <div class="col-cell-header">Aggregate</div>  
+          </div>  
+          <div class="col">  
+            <label>  
+             <input type="number" ng-model="materialRates.aggregate" min="0"  
+                     max="10000" />  
+            </label>  
+          </div>  
+          <div class="col">  
+            <div class="col-cell-values">₹ Per {{rateUnit()}}</div>  
+          </div>  
+        </div>  
+      </div>  
+    </div>
+
+    <!-- Button to Save the rates -->  
+    <div class="row">
+      <div class="col"></div>
+      <div class="col col-50">
+        <form ng-submit="saveMaterialRates()" >
+          <button class="button button-block button-positive"
+                  type="submit">Save</button>
+        </form>
+      </div>
+      <div class="col"></div>
+    </div>
+    
+  </ion-content>
+</ion-view>

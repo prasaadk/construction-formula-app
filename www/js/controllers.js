@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
 
 .controller('AboutCtrl', function($scope) {})
 
-.controller('FindRatioCtrl', ['$rootScope', '$scope', function($rootScope, $scope) {
+.controller('FindRatioCtrl', ['$rootScope', '$scope', function($rootScope, $stateParams, $scope) {
   $rootScope.postData = {grade: "20", sandProportion: "50"};
 
   $rootScope.crushedSandProportion = function () {
@@ -38,17 +38,17 @@ angular.module('starter.controllers', [])
 
 .controller('FindQuantityCtrl', ['$rootScope', '$scope', function($rootScope, $scope) {
     var conversionRate = 0.3529;
-    $rootScope.unit = "Cum";
-    $rootScope.unitName = function () {
-        console.log("unit: " + $rootScope.unit);
-        if($rootScope.unit == "Cum") {
-            $rootScope.unit = "Brass";
-        }else{
-            $rootScope.unit = "Cum";
-        }
-    }
+    $rootScope.settings = {
+        enableCum: true
+    };
+    
+    $scope.unit = function () {
+        return $rootScope.settings.enableCum ? "Cum":"Brass";
+    };
+
     var ratio = null;
     try {
+       
         ratio = $rootScope.ratio();
         $rootScope.ratioData = ratio;
     } catch (err) {
@@ -82,7 +82,7 @@ angular.module('starter.controllers', [])
         var rsQ = 1.52 * rs / denominator;
         var aggregateQ = 1.52 * aggregate / denominator;
 
-        if($rootScope.unit == "Brass") {
+        if(!$rootScope.settings.enableCum) {
             csQ = csQ * conversionRate;
             rsQ = rsQ * conversionRate;
             aggregateQ = aggregateQ * conversionRate;
@@ -96,15 +96,31 @@ angular.module('starter.controllers', [])
     };
 }])
 
-.controller('FindCostCtrl', ['$rootScope', '$scope', function($rootScope, $scope, Rates) {
+.controller('FindCostCtrl', ['$rootScope', '$scope', function($rootScope, $scope) {
 
 }])
 
-.controller('RatesCtrl', ['$rootScope', '$scope', function($scope) {
-  $rootScope.materialRates = Rates.getMaterialRates();
-  $rootScope.saveMaterialRates = function () {
+.controller('RatesCtrl', ['$rootScope', '$scope', 'Rates',function($rootScope, $scope, Rates) {
+    var conversionRate = 0.3529;
+    $rootScope.rateSettings = {
+        enableCum: true
+    };
+
+    var unit = function() {
+        return $rootScope.rateSettings.enableCum ? "Cum" : "Brass";
+    };
+    
+    $rootScope.rateUnit = unit;
+
+    $rootScope.convert = function() {
+        $rootScope.materialRates = Rates.convertTo($rootScope.materialRates, unit());
+    };
+
+   $rootScope.materialRates = Rates.getMaterialRates();
+   $rootScope.rateSettings.enableCum = $rootScope.materialRates.unit == "Cum"?true:false;
+   $rootScope.saveMaterialRates = function () {
       Rates.save($rootScope.materialRates);
-  };
+   };
 }])
 
 

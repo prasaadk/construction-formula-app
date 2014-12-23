@@ -2,12 +2,14 @@
   "name": "formula",
   "version": "1.0.0",
   "description": "Formula: An Ionic project",
+  "private": true,
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^0.7.1",
     "gulp-concat": "^2.2.0",
     "gulp-minify-css": "^0.3.0",
-    "gulp-rename": "^1.2.0"
+    "gulp-rename": "^1.2.0",
+    "express": "~4.4.3"
   },
   "devDependencies": {
     "bower": "^1.3.3",

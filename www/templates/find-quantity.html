@@ -17,7 +17,7 @@
 
     <div class="card">
       <div class="item item-divider">
-         Choose ratio
+        Choose ratio
       </div>
       <div class="item item-text-wrap">
         <div class="row">
@@ -36,12 +36,12 @@
         </div>
         <div class="row">
           <div class="col center">
-             <div class="col-cell-values">{{ratioData.cement}}</div>
+            <div class="col-cell-values">{{ratioData.cement}}</div>
           </div>
           <div class="col center">
             <label>
               <input type="number" ng-model="ratioData.cs" min="0"
-              max="50" step="0.05" />
+                     max="50" step="0.05" />
             </label>
           </div>
           <div class="col center">
@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <!-- Display Grade -->
+    <!-- Display Concrete Grade -->
     <div class="card">
       <div class="item item-text-wrap">
         <div class="row">
@@ -79,12 +79,12 @@
 
     <div class="card">
       <div class="item item-divider">
-         Quantities
+        Quantities
       </div>
       <div class="item item-text-wrap item-toggle">
-        <strong>Unit:</strong> {{unit}}
+        <strong>Unit:</strong> {{unit()}}
         <label class="toggle">
-          <input type="checkbox" ng-click="unitName()" checked="true">
+          <input type="checkbox" ng-model="settings.enableCum" >
           <div class="track">
             <div class="handle"></div>
           </div>
@@ -113,7 +113,7 @@
             <div class="col-cell-values">{{calculateQuantity().cs}}</div>
           </div>
           <div class="col">
-            <div class="col-cell-values">{{unit}}</div>
+            <div class="col-cell-values">{{unit()}}</div>
           </div>
         </div>
 
@@ -126,7 +126,7 @@
             <div class="col-cell-values">{{calculateQuantity().rs}}</div>
           </div>
           <div class="col">
-            <div class="col-cell-values">{{unit}}</div>
+            <div class="col-cell-values">{{unit()}}</div>
           </div>
         </div>
 
@@ -139,7 +139,7 @@
             <div class="col-cell-values">{{calculateQuantity().aggregate}}</div>
           </div>
           <div class="col">
-            <div class="col-cell-values">{{unit}}</div>
+            <div class="col-cell-values">{{unit()}}</div>
           </div>
         </div>
       </div>
