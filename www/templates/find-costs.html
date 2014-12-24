@@ -4,7 +4,7 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="Find Grade and Quantity">
+<ion-view view-title="Costs" class="page">
   <ion-content class="padding">
     <!-- Description -->
     <div class="card">
@@ -79,52 +79,6 @@
           </div>
           <div class="col">
             <div class="col-cell-values">{{unit()}}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- Ratio Inputs -->
-    <div class="card">
-      <div class="item item-divider">
-        Choose ratio
-      </div>
-      <div class="item item-text-wrap">
-        <div class="row">
-          <div class="col">
-            <div class="col-cell-header">Cement</div>
-          </div>
-          <div class="col">
-            <div class="col-cell-header">Crushed Sand</div>
-          </div>
-          <div class="col">
-            <div class="col-cell-header">River Sand</div>
-          </div>
-          <div class="col">
-            <div class="col-cell-header">Aggregate</div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col center">
-            <div class="col-cell-values">{{ratioData.cement}}</div>
-          </div>
-          <div class="col center">
-            <label>
-              <input type="number" ng-model="ratioData.cs" min="0"
-                     max="50" step="0.05" />
-            </label>
-          </div>
-          <div class="col center">
-            <label>
-              <input type="number" ng-model="ratioData.rs" min="0"
-                     max="30" step="0.05" />
-            </label>
-          </div>
-          <div class="col center">
-            <label>
-              <input type="number" ng-model="ratioData.aggregate" min="0" max="100" step="0.05" />
-            </label>
           </div>
         </div>
       </div>

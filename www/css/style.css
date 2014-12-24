@@ -13,7 +13,7 @@
 
 .item {
     font-size: 12px;
-    border-color: #FF1313;
+    //border-color: #FF1313;
 }
 
 .col-cell-values {
@@ -43,4 +43,13 @@ input[type="number"] {
 
 .page-title {
     font-size: 14px;
+}
+
+.page {
+    //background-image: url(http://thumbs.dreamstime.com/z/gray-stone-cement-background-design-33278364.jpg);
+
+}
+
+.card {
+    opacity: 0.9;
 }
