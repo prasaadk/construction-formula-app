@@ -122,4 +122,5 @@ angular.module('starter.controllers', [])
 
 .controller('FindCostsCtrl', ['$rootScope', '$scope', 'Rates', function($rootScope, $scope, Rates) {
     $rootScope.materialRates = Rates.getMaterialRates();
+
 }]);
