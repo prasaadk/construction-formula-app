@@ -123,4 +123,39 @@ angular.module('starter.controllers', [])
 .controller('FindCostsCtrl', ['$rootScope', '$scope', 'Rates', function($rootScope, $scope, Rates) {
     $rootScope.materialRates = Rates.getMaterialRates();
 
+    var conversionRate = 0.3529;
+    $rootScope.unitSettings = {
+        enableCum: true
+    };
+
+    $scope.unit = function () {
+        return $rootScope.unitSettings.enableCum ? "Cum":"Brass";
+    };
+
+    try {
+        $rootScope.quantityData = $rootScope.calculateQuantity();
+    } catch (err) {
+        $rootScope.quantityData = {
+            cement: 0,
+            rs: 0,
+            cs: 0,
+            aggregate: 0
+        };    
+    }
+
+    $rootScope.calculateCost = function() {
+        var materialRates = Rates.getMaterialRates();
+        var quantityData = $rootScope.quantityData;
+        var cement = quantityData.cement * materialRates.cement;
+        var cs = quantityData.cs * materialRates.cs;
+        var rs = quantityData.rs * materialRates.rs;
+        var aggregate = quantityData.aggregate * materialRates.aggregate;
+
+        return {cement: parseFloat(cement.toFixed(2)),
+                cs: parseFloat(cs.toFixed(3)),
+                rs: parseFloat(rs.toFixed(3)),
+                aggregate: parseFloat(aggregate.toFixed(3))
+               };
+    }
+
 }]);
